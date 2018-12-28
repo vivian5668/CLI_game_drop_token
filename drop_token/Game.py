@@ -35,7 +35,12 @@ class Game:
         while self.board.put(position, self.current_player) is False:
             position = input('That position is full, choose another position -->  ')
         result = self.board.put(position, self.current_player)
-        if result == 'tie':
-            return 'tie'
+        print('result is {}'.format(result))
+
         self.successful_puts.append(position)
         print('OK')
+
+        if result == 'tie':
+            return 'tie'
+        elif result in self.players:
+            return 'win'
