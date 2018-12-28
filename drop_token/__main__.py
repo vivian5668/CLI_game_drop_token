@@ -22,7 +22,7 @@ def main():
             result = game.put(put_position)
             print('------>')
             print(result)
-            if result == 'tie' or 'win':
+            if result == 'tie' or result == 'win':
                 break
             continue
         elif user_selection == 'GET':

@@ -27,8 +27,9 @@ class Board:
 
         # update available_row_index_for_positions for future rounds
         self.available_row_index_for_positions[position] -= 1
-        print('here')
+        print('here------------')
         current_result = self.check_wins()
+        print(current_result)
         if current_result is None:
             return
         elif current_result in self.players:
