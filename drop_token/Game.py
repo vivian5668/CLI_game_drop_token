@@ -12,7 +12,6 @@ class Game:
         if len(self.successful_puts) == 0:
             print("no successful puts yet")
             return
-        print(self.successful_puts)
 
     def print_board(self):
         self.board.print_board()
@@ -26,6 +25,6 @@ class Game:
         pass
 
     def put(self, position):
-        while not self.board.put(position, self.current_player):
-            position = input('That position is full, choose another one:  ')
+        while self.board.put(position, self.current_player) is False:
+            position = input('That position is full, PUT another number -->  ')
         self.board.put(position, self.current_player)

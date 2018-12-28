@@ -9,18 +9,29 @@ class Board:
         """
         self.board = [[0 for _ in range(width)] for _ in range(width)]
         self.available_row_index_for_positions = {position: width - 1 for position in range(1, width + 1)}
+        self.width = width
 
     def put(self, position, player_id):
         """
         drop a toekn at position corresponding to the labels on the board
         """
+        print('position, player_id')
+        print(position, player_id)
+        print(self.available_row_index_for_positions)
         if self.available_row_index_for_positions[position] == 0:
             return False
         available_row = self.available_row_index_for_positions[position]
+
         self.available_row_index_for_positions[position] -= 1
-        self.board[available_row][[position - 1]] = player_id
+        self.board[available_row][position - 1] = player_id
 
     def print_board(self):
-        print(self.board)
+        board = "\n".join(["| " + " ".join([str(i) for i in row]) for row in self.board])
+        temp = "+" + '-' * (len("| " + " ".join([str(i) for i in self.board[0]])) - 1)
+        board += '\n' + temp
+        board += "\n  " + " ".join([str(x) for x in range(1, self.width + 1)])
+        print(board)
+
+        
 
 
