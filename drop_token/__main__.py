@@ -21,8 +21,8 @@ def main():
             put_position = int(user_selection[3:].strip())
             result = game.put(put_position)
 
-            if result == 'tie' or result == 'win':
-                break
+            # if result == 'tie' or result == 'win':
+            #     break
             continue
         elif user_selection == 'GET':
             game.get()

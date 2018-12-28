@@ -16,10 +16,10 @@ class Board:
         """
         drop a toekn at position corresponding to the labels on the board
         """
-        print('position, player_id')
-        print(position, player_id)
-        print('available row index at each position')
-        print(self.available_row_index_for_positions)
+        # print('position, player_id')
+        # print(position, player_id)
+        # print('available row index at each position')
+        # print(self.available_row_index_for_positions)
         
         available_row = self.available_row_index_for_positions[position]
         self.board[available_row][position - 1] = player_id
@@ -57,38 +57,56 @@ class Board:
         index_sum = 0
         for index in self.available_row_index_for_positions.values():
             index_sum += index
-        if index_sum == 0:
+        if index_sum == -3:
             return 'tie'
 
         # check wins horizontal levels
-        for row in self.board:
-            for player_id in self.players:
-                if sum(row) == player_id * self.width:
+        for player_id in self.players:
+            for row in self.board:
+                count = 0
+                for key in row:
+                    if key != player_id:
+                        break
+                    else:
+                        count += 1
+                if count == self.width:
                     return player_id
+                
+
         # check wins vertical levels
         for player_id in self.players:
             for i in range(self.width):
-                column_sum = 0
+                count = 0
                 for j in range(self.width):
-                    column_sum += self.board[j][i]
-                if column_sum == player_id * self.width:
+                    if self.board[j][i] != player_id:
+                        break
+                    else:
+                        count += 1
+                if count == self.width:
                     return player_id
 
         # diagonal levels
-        diagonal_sum1 = 0
-        for i in range(self.width):
-            diagonal_sum1 += self.board[i][i]
         for player_id in self.players:
-            if diagonal_sum1 == player_id * self.width:
+            count = 0
+            for i in range(self.width):
+                if self.board[i][i] != player_id:
+                     break
+                else:
+                    count += 1
+            if count == self.width:
                 return player_id
 
-        diagonal_sum2 = 0
-        for i in range(self.width):
-            for j in range(self.width-1, -1, -1):
-                diagonal_sum2 += self.board[i][j]
         for player_id in self.players:
-            if diagonal_sum2 == player_id * self.width:
-                return player_id  
+            count = 0
+            for i in range(self.width):
+                for j in range(self.width-1, -1, -1):
+                    if self.board[i][j] != player_id:
+                        break
+                    else:
+                        count += 1
+            if count == self.width:
+                return player_id
+ 
 
         # if no wins or tie, return nothing
 
