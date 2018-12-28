@@ -20,16 +20,13 @@ class Board:
         print(position, player_id)
         print('available row index at each position')
         print(self.available_row_index_for_positions)
-        if self.available_row_index_for_positions[position] < 0:
-            return False
+        
         available_row = self.available_row_index_for_positions[position]
         self.board[available_row][position - 1] = player_id
 
         # update available_row_index_for_positions for future rounds
         self.available_row_index_for_positions[position] -= 1
-        print('here------------')
         current_result = self.check_wins()
-        print(current_result)
         if current_result is None:
             return
         elif current_result in self.players:

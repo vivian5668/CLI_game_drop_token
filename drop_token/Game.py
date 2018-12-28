@@ -3,7 +3,7 @@ from .Board import Board
 class Game:
     def __init__(self, width):
         
-        self.total_iteration_count = 0
+        self.total_iteration_count = 1
         self.players = [1, 2]
         self.board = Board(width, self.players)
         self.current_player = 1
@@ -31,14 +31,15 @@ class Game:
         """
         return self.board.check_wins()
 
-    def put(self, position):
-        while self.board.put(position, self.current_player) is False:
+    def put(self, position):  
+        while self.board.available_row_index_for_positions[position] < 0:
             position = input('That position is full, choose another position -->  ')
+        self.total_iteration_count += 1
+        self.current_player = self.players[self.total_iteration_count % 2]
         result = self.board.put(position, self.current_player)
-        print('result is {}'.format(result))
-
-        self.successful_puts.append(position)
+        
         print('OK')
+        self.successful_puts.append(position)
 
         if result == 'tie':
             return 'tie'
