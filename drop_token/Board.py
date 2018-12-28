@@ -25,10 +25,11 @@ class Board:
         if current_result is None:
             return
         elif current_result in self.players:
+            print('WIN')
             print('Player {} wins!'.format(current_result))
             return current_result
         else:
-            print('This is a tie! Your game has ended')
+            print('DRAW')
             return 'tie'
 
     def print_board(self):

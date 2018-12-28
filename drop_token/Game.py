@@ -32,17 +32,9 @@ class Game:
         return self.board.check_wins()
 
     def put(self, position): 
-        while self.board.available_row_index_for_positions[position] < 0:
+        if self.board.available_row_index_for_positions[position] < 0:
             print('ERROR')
-            position_input = input('That position is full, choose another position -->  ')
-            while True:
-                try:
-                    if 0 < int(position_input) <= self.width:
-                        position = int(position_input)
-                        break
-                except:
-                    continue
-        
+            return
         self.total_iteration_count += 1
         self.current_player = self.players[self.total_iteration_count % 2]
         result = self.board.put(position, self.current_player)
