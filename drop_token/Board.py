@@ -27,10 +27,9 @@ class Board:
         elif current_result in self.players:
             print('WIN')
             print('Player {} wins!'.format(current_result))
-            return current_result
         else:
             print('DRAW')
-            return 'tie'
+
 
     def print_board(self):
         board = "\n".join(["| " + " ".join([str(i) for i in row]) for row in self.board])

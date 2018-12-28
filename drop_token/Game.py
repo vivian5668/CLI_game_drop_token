@@ -42,7 +42,3 @@ class Game:
         print('OK')
         self.successful_puts.append(position)
 
-        if result == 'tie':
-            return 'tie'
-        elif result in self.players:
-            return 'win'
