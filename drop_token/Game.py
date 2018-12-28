@@ -2,7 +2,7 @@ from .Board import Board
 
 class Game:
     def __init__(self, width):
-        
+        self.width = width
         self.total_iteration_count = 1
         self.players = [1, 2]
         self.board = Board(width, self.players)
@@ -31,9 +31,18 @@ class Game:
         """
         return self.board.check_wins()
 
-    def put(self, position):  
+    def put(self, position): 
         while self.board.available_row_index_for_positions[position] < 0:
-            position = input('That position is full, choose another position -->  ')
+            print('ERROR')
+            position_input = input('That position is full, choose another position -->  ')
+            while True:
+                try:
+                    if 0 < int(position_input) <= self.width:
+                        position = int(position_input)
+                        break
+                except:
+                    continue
+        
         self.total_iteration_count += 1
         self.current_player = self.players[self.total_iteration_count % 2]
         result = self.board.put(position, self.current_player)
