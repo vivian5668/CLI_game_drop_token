@@ -16,11 +16,6 @@ class Board:
         """
         drop a toekn at position corresponding to the labels on the board
         """
-        # print('position, player_id')
-        # print(position, player_id)
-        # print('available row index at each position')
-        # print(self.available_row_index_for_positions)
-        
         available_row = self.available_row_index_for_positions[position]
         self.board[available_row][position - 1] = player_id
 
@@ -30,7 +25,7 @@ class Board:
         if current_result is None:
             return
         elif current_result in self.players:
-            print('{} wins!'.format(current_result))
+            print('Player {} wins!'.format(current_result))
             return current_result
         else:
             print('This is a tie! Your game has ended')
