@@ -19,7 +19,9 @@ def main():
             continue
         elif user_selection[:3] == 'PUT':
             put_position = int(user_selection[3:].strip())
-            game.put(put_position)
+            result = game.put(put_position)
+            if result == 'tie':
+                break
             continue
         elif user_selection == 'GET':
             game.get()
