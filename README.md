@@ -1,4 +1,4 @@
-# CLI Game  -- Grop Tokens
+# CLI Game  -- Drop Tokens
 
 ## Installation Choice 1 
 
