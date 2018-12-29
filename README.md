@@ -37,3 +37,10 @@ type `start` in the terminal to start the game
    - `PUT 3`
   
 
+## To-do List
+- write docstring for classes and functions
+- complete HELP text
+- add ASCII visuals for better user experience
+- write more tests
+- make user-input checks more robust
+
