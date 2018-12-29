@@ -35,6 +35,9 @@ class Game:
         return self.board.check_wins()
 
     def put(self, position):
+        """
+        place the current player's piece on the board
+        """
         if not position.isdigit():
             print('Position has to be a valid number')
             return 
