@@ -1,9 +1,3 @@
-# Makefile for the 'humanfriendly' package.
-#
-# Author: Peter Odding <peter@peterodding.com>
-# Last Change: October 20, 2018
-# URL: https://humanfriendly.readthedocs.io
-
 PACKAGE_NAME = drop_token
 WORKON_HOME ?= $(PWD)/../virtualenvs
 VIRTUAL_ENV ?= $(WORKON_HOME)/$(PACKAGE_NAME)
