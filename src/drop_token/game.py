@@ -1,4 +1,7 @@
-from .Board import Board
+# -*- coding: utf-8 -*-
+
+from .board import Board
+
 
 class Game:
     def __init__(self, width):
@@ -31,14 +34,20 @@ class Game:
         """
         return self.board.check_wins()
 
-    def put(self, position): 
+    def put(self, position):
+        if not position.isdigit():
+            print('Position has to be a valid number')
+            return 
+        position = int(position)
+        if position < 0 or position > self.width:
+            print('Position has to be smaller than board width')
+            return
         if self.board.available_row_index_for_positions[position] < 0:
             print('ERROR')
             return
         self.total_iteration_count += 1
         self.current_player = self.players[self.total_iteration_count % 2]
-        result = self.board.put(position, self.current_player)
-        
+        self.board.put(position, self.current_player)
+
         print('OK')
         self.successful_puts.append(position)
-

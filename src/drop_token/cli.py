@@ -1,6 +1,7 @@
-import sys
-from .Board import Board
-from .Game import Game
+# -*- coding: utf-8 -*-
+
+from .game import Game
+
 
 def main():
     while True:
@@ -8,17 +9,18 @@ def main():
         try:
             if 2 <= int(game_width) <= 9:
                 break
-        except:
+        except Exception:
+            print('Input a valid size, please.')
             continue
     game = Game(int(game_width))
-    
+
     while True:
-        user_selection = input('type a command choosing from: BOARD, PUT, GET, HELP, EXIT ---> ')
+        user_selection = input('type a command choosing from: BOARD, PUT position[INT], GET, HELP, EXIT ---> ')
         if user_selection == 'BOARD':
             game.print_board()
             continue
         elif user_selection[:3] == 'PUT':
-            put_position = int(user_selection[3:].strip())
+            put_position = user_selection[3:].strip()
             game.put(put_position)
             continue
         elif user_selection == 'GET':
@@ -33,8 +35,6 @@ def main():
             if user_input == 'q':
                 continue
 
+
 if __name__ == '__main__':
     main()
-
-    
-

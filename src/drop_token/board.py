@@ -1,4 +1,9 @@
+# -*- coding: utf-8 -*-
+
 class Board:
+
+    """"""
+
     def __init__(self, width, players):
         """ 
         instantiate a square board with width of int(width)
@@ -10,11 +15,11 @@ class Board:
         self.board = [[0 for _ in range(width)] for _ in range(width)]
         self.available_row_index_for_positions = {position: width - 1 for position in range(1, width + 1)}
         self.width = width
-        self.players = players # players is a list of IDs, i.e, [1, 2]
+        self.players = players  # players is a list of IDs, i.e, [1, 2]
 
     def put(self, position, player_id):
         """
-        drop a toekn at position corresponding to the labels on the board
+        drop a token at position corresponding to the labels on the board
         """
         available_row = self.available_row_index_for_positions[position]
         self.board[available_row][position - 1] = player_id
@@ -29,7 +34,6 @@ class Board:
             print('Player {} wins!'.format(current_result))
         else:
             print('DRAW')
-
 
     def print_board(self):
         board = "\n".join(["| " + " ".join([str(i) for i in row]) for row in self.board])
@@ -66,7 +70,6 @@ class Board:
                         count += 1
                 if count == self.width:
                     return player_id
-                
 
         # check wins vertical levels
         for player_id in self.players:
@@ -85,7 +88,7 @@ class Board:
             count = 0
             for i in range(self.width):
                 if self.board[i][i] != player_id:
-                     break
+                    break
                 else:
                     count += 1
             if count == self.width:
@@ -94,24 +97,12 @@ class Board:
         for player_id in self.players:
             count = 0
             for i in range(self.width):
-                for j in range(self.width-1, -1, -1):
+                for j in range(self.width - 1, -1, -1):
                     if self.board[i][j] != player_id:
                         break
                     else:
                         count += 1
             if count == self.width:
                 return player_id
- 
 
         # if no wins or tie, return nothing
-
-            
-            
-
-
-        
-
-
-        
-
-
